@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-XChangeApplication<XChange>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "xchange.x_change.XChangeApplication",
+            "projectName": "XChange",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
