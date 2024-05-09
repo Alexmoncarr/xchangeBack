@@ -26,7 +26,7 @@ import xchange.x_change.util.ReferencedWarning;
 @Transactional
 public class UserService {
 
-    public UserDetailsService userDetailsService();
+    public UserDetailsService userDetailsService;
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
