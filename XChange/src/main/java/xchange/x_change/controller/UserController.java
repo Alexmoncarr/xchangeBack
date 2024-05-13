@@ -3,10 +3,13 @@ package xchange.x_change.controller;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +33,36 @@ import xchange.x_change.util.ReferencedWarning;
 @RequestMapping(value = "/api/users", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
-    private final UserService userService;
-    private final RoleRepository roleRepository;
+    @Autowired
+    private UserService userService;
 
-    public UserController(final UserService userService, final RoleRepository roleRepository) {
-        this.userService = userService;
-        this.roleRepository = roleRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @PostMapping("/")
+    public User saveUser(@RequestBody User user) throws Exception {
+        Set<UserRole> userRoles = new HashSet<>();
+
+        Role role = new Role();
+        role.setRoleType("ROLCUSTOMER");
+    
+        UserRole userRole = new UserRol();
+        userRole.setUser(user);
+        userRole.setRole(role);
+    
+        userRoles.add(userRol);
+        return userService.saveUser(user, userRoles);
     }
+    
+   
+
+    // private final UserService userService;
+    // private final RoleRepository roleRepository;
+
+    // public UserController(final UserService userService, final RoleRepository roleRepository) {
+    //     this.userService = userService;
+    //     this.roleRepository = roleRepository;
+    // }
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> getAllUsers() {
