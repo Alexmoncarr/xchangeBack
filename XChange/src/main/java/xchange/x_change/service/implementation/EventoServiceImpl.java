@@ -39,4 +39,20 @@ public class EventoServiceImpl implements EventoService {
     public List<Evento> findAllEventos() {
         return eventoRepository.findAll();
     }
+
+    @Override
+    @Transactional
+    public Evento updateEvento(Long id, Evento eventoDetails) {
+        Evento evento = eventoRepository.findById(id)
+            .orElseThrow(() -> new IllegalStateException("Evento no encontrado"));
+
+        evento.setNombre(eventoDetails.getNombre());
+        evento.setFecha(eventoDetails.getFecha());
+        evento.setDescripcion(eventoDetails.getDescripcion());
+        // Actualiza otros campos necesarios
+
+        return eventoRepository.save(evento);
+    }
+
+
 }

@@ -21,4 +21,10 @@ public class ValoracionController {
         Valoracion nuevaValoracion = valoracionService.createValoracion(valoracion);
         return ResponseEntity.ok(nuevaValoracion);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProducto(@PathVariable Long id) {
+        valoracionService.deleteValoracionById(id);
+        return ResponseEntity.ok("Producto eliminado con éxito");
+    }
 }

@@ -3,4 +3,5 @@ import xchange.x_change.models.Valoracion;
 
 public interface ValoracionService {
     Valoracion createValoracion(Valoracion valoracion);
+    void deleteValoracionById (Long id);
 }

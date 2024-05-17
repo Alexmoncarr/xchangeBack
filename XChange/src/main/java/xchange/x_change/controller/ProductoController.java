@@ -48,4 +48,5 @@ public class ProductoController {
         productoService.deleteProductoById(id);
         return ResponseEntity.ok("Producto eliminado con éxito");
     }
+    
 }

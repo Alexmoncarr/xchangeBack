@@ -9,4 +9,5 @@ public interface EventoService {
     Evento createEvento(Evento evento);
     void registerUsuarioToEvento(Long eventoId, Usuario usuario);
     List<Evento> findAllEventos();
+    Evento updateEvento (Long eventoId, Evento eventoDetails);
 }

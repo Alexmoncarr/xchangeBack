@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import xchange.x_change.models.Evento;
 import xchange.x_change.service.EventoService;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
-@RequestMapping("/api/eventos")
+@RequestMapping(value="api/eventos")
 @CrossOrigin(origins = "http://localhost:4200")
 public class EventoController {
 
@@ -30,10 +33,14 @@ public class EventoController {
         return ResponseEntity.ok(newEvento);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<List<Evento>> getAllEventos() {
         return ResponseEntity.ok(eventoService.findAllEventos());
     }
 
-    // Añadir más métodos según sea necesario
+    @PutMapping("path/{id}")
+    public ResponseEntity<Evento> updateEvento(@PathVariable Long id, @RequestBody Evento eventoDetails) {
+        Evento updatedEvento = eventoService.updateEvento(id, eventoDetails);
+       return ResponseEntity.ok(updatedEvento);
+    }
 }
