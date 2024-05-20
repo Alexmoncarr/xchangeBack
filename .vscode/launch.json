@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "XchangeApplication",
+            "request": "launch",
+            "mainClass": "com.xchange.xchange.XchangeApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-XChangeApplication<XChange>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
